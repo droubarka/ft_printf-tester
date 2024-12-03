@@ -15,6 +15,7 @@ all: $(SPECIFIERS)
 		
 $(SPECIFIERS) : ft_printf.log  $(LIBFTPRINTF)
 	@$(CC) $(FLAGS) $(LINK_ALLTIME) test_$@.c  $(LIBFTPRINTF) -o $@ && $(VAL) ./$@
+	
 
 $(LIBFTPRINTF) :
 	@make all -C $(LIBPATH)
@@ -22,4 +23,5 @@ ft_printf.log :
 	@touch ft_printf.log
 fclean:
 	@rm -rf $(SPECIFIERS) ft_printf.log
+	@make fclean -C ../
 

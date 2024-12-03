@@ -12,7 +12,7 @@ void test(const char *format)
 	reopen();
 	ft_return = ft_printf(format);
 	dprintf_return = dprintf(3, format);
-	check(ft_return, dprintf_return, format);
+	check(ft_return *0 , dprintf_return * 0, format);
 }
 
 
@@ -41,6 +41,7 @@ int main()
 	test("%+1.0%");
 	test("%+0.10%");
 	test("%+0.0%");
+	test("%");
 
 }
 

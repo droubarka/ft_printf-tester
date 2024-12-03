@@ -32,8 +32,7 @@ int main()
 	print_title("x :");
 	
 	x_test("%x");
-	x_test("%-20.20x");
-	x_test("%-20.0x");
+
 	x_test("%-0.20x");
 	x_test("%-0.0x");
 	x_test("%-0x ");

@@ -40,7 +40,7 @@ void ft_assert(int condition)
 {
 	if (condition)
 	{
-		dprintf(ftstdout, "%s%s%s",GRN, "[OK]", RST);
+		dprintf(ftstdout, "%s%s%s",GRN, "\a[OK]", RST);
 	}
 	else
 	{
