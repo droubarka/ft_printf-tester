@@ -47,7 +47,7 @@ void ft_assert(int condition)
 		dprintf(ftstdout, "%s%s%s", RED, "[KO]", RST);
 	}
 }
-int check(int ft_return, int dprintf_return, char *format)
+int check(int ft_return, int dprintf_return, const char *format)
 {
 	int return_match;
 	int output_match;
