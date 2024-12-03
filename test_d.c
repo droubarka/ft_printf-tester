@@ -10,7 +10,7 @@ void test(char *format, int d)
 	int dprintf_return;	
 	reopen();
 	ft_return = ft_printf(format, d);
-	dprintf_return = dprintf(3, format, d + 1);
+	dprintf_return = dprintf(3, format, d);
 	if (check(ft_return, dprintf_return, format))
 	{
 
