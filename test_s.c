@@ -20,6 +20,7 @@ void s_test(char *format)
 {
 	test(format, NULL);
 	test(format, "");
+	test(format, "0123456789");
 }
 int main()
 {
@@ -39,6 +40,7 @@ int main()
 
 	s_test("% 20.20s");
 	s_test("% 20.0s");
+	s_test("%20.10s");
 	s_test("% 0.20s");
 	s_test("% 0.0s");
 	s_test("% 0s");
