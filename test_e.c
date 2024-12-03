@@ -4,7 +4,7 @@
 
 extern int fd_log;
 extern int ftstdout;
-void test(char *format)
+void test(const char *format)
 {
 	
 	int ft_return;	

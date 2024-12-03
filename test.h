@@ -8,6 +8,6 @@
 #define RST "\x1B[0m"
 int ft_printf(const char *format, ...);
 
-int check(int ft_return, int dprintf_return, char *format);
+int check(int ft_return, int dprintf_return, const char *format);
 void reopen(void);
 void print_title(char *format, ...);
