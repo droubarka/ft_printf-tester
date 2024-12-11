@@ -10,10 +10,12 @@ char ft_buffer[];
 int ftstdout = 0;
 int fd_log = 0;
 int id = 1;
+#define STDOUT  777
+#define FDLOG  42
 void reopen(void)
 {
 	if (ftstdout == 0)
-		ftstdout = dup2(1,777);
+		ftstdout = dup2(1, STDOUT);
 	close(ft_pipe[0]);
 	close(ft_pipe[1]);
 	close(dprintf_pipe[0]);
@@ -51,8 +53,8 @@ int check(int ft_return, int dprintf_return, const char *format)
 {
 	int return_match;
 	int output_match;
-	write(1, " ", 1);
-	write(3, " ", 1);
+	write(1, "\0", 1);
+	write(3, "\0", 1);
 	read(0, ft_buffer, BUFFER_SIZE);
 	read(2, dprintf_buffer, BUFFER_SIZE);
 	//dprintf(777, "%s, %i\n",ft_buffer, ft_return);
@@ -62,7 +64,7 @@ int check(int ft_return, int dprintf_return, const char *format)
 
 	if (output_match == 0 || return_match == 0)
 	{
-		dprintf(fd_log, "return value      : printf  %d  , ft_printf %d\n", dprintf_return, ft_return);
+		dprintf(fd_log, "return value      : printf \"%d\", ft_printf \"%d\"\n", dprintf_return, ft_return);
 		dprintf(fd_log, "ft_printf output  : %s\n", ft_buffer);
 		dprintf(fd_log, "std printf output : %s\n", dprintf_buffer);
 		dprintf(fd_log, "format            : %s.\n", format);

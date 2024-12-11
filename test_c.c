@@ -28,7 +28,7 @@ int main()
 {
 	//int fd = open("test.txt", O_CREAT | O_WRONLY);
 	print_title("c :");
-	test_c("%c");
+	test_c("%-10c");
 	test_c("%-+78.0c");
 	test_c("%-+0.0c");
 	test_c("%-+0.4c");

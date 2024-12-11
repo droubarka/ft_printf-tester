@@ -1,5 +1,5 @@
 TESTS = 
-CC = gcc
+CC = cc
 FLAGS = -Wall -Werror -Wextra  -Iinclude -g -Wno-format-security
 VAL = valgrind -q --leak-check=full --show-leak-kinds=all
 SRC_DIR = src
