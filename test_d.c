@@ -30,7 +30,7 @@ int main()
 {
 	print_title("d et i:");
 	
-	d_test("%d");
+	d_test("%+8.3d");
 	d_test("%-20.20d");
 	d_test("%-20.0d");
 	d_test("%-0.20d");
