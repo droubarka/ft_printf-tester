@@ -1,25 +1,31 @@
-#include "test.h"
-#include <stdarg.h>
 
+#include "test.h"
+
+#include <stdarg.h>
 
 extern int fd_log;
 extern int ftstdout;
+
 void test(const char *format)
 {
-	
-	int ft_return;	
-	int dprintf_return;	
+	int ft_return;
+	int dprintf_return;
+
 	reopen();
+
 	ft_return = ft_printf(format);
 	dprintf_return = dprintf(3, format);
-	check(ft_return *0 , dprintf_return * 0, format);
+
+	if (check(ft_return *0 , dprintf_return * 0, format))
+	{
+
+	}
 }
 
-
-int main()
+int main(void)
 {
-	print_title("e :");
-	
+	print_title("Conversion specifier: %%");
+
 	test("%%");
 	test("%-%");
 	test("%+%");
@@ -43,5 +49,5 @@ int main()
 	test("%+0.0%");
 	test("%");
 
+	return 0;
 }
-

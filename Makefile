@@ -1,27 +1,36 @@
-TESTS = 
 CC = cc
-FLAGS = -Wall -Werror -Wextra  -Iinclude -g -Wno-format-security
+FLAGS = -Wall -Wextra -Werror -Iinclude -g -Wno-format-security
 VAL = valgrind -q --leak-check=full --show-leak-kinds=all
+
+TESTS = 
 SRC_DIR = src
 TEST_DIR = .
 UTILS = utils
+
 LIBPATH = ..
 LIBFTPRINTF = $(LIBPATH)/libftprintf.a
-LINK_ALLTIME = check.c 
-SPECIFIERS = c d s u x e
-all: $(SPECIFIERS)
 
+LINK_ALLTIME = check.c
+SPECIFIERS = c s p d u x e
 
-		
-$(SPECIFIERS) : ft_printf.log  $(LIBFTPRINTF)
-	@$(CC) $(FLAGS) $(LINK_ALLTIME) test_$@.c  $(LIBFTPRINTF) -o $@ && $(VAL) ./$@
-	
+all: default
 
-$(LIBFTPRINTF) :
-	@make all -C $(LIBPATH)
-ft_printf.log : 
+default: fclean $(SPECIFIERS)
+	@echo "\n\n[!] See '$$(pwd)/ft_printf.log'\n"
+	@make -C $(LIBPATH) fclean
+	@make clean
+
+$(SPECIFIERS): ft_printf.log $(LIBFTPRINTF)
+	@$(CC) $(FLAGS) $(LINK_ALLTIME) test_$@.c $(LIBFTPRINTF) -o $@ && $(VAL) ./$@
+
+ft_printf.log:
 	@touch ft_printf.log
-fclean:
-	@rm -rf $(SPECIFIERS) ft_printf.log
-	@make fclean -C ../
 
+$(LIBFTPRINTF):
+	@make -C $(LIBPATH) all clean
+
+clean:
+	@rm -rf $(SPECIFIERS)
+
+fclean: clean
+	@rm -rf ft_printf.log
